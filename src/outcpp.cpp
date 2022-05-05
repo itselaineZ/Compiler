@@ -1,0 +1,11 @@
+#include "./PARSER/PARSER.cpp"
+#include "./PARSER/ITEM.cpp"
+#include "./PARSER/ITEMSET.cpp"
+#include "./PARSER/REDUCT.cpp"
+#include "./PARSER/LEXICAL.cpp"
+#include "./PARSER/STACKSTORE.cpp"
+
+#include "./SEMANTICS/SEMANTICS.cpp"
+#include "./SEMANTICS/SYMBOL.cpp"
+#include "./SEMANTICS/NAMEITEM.cpp"
+#include "./SEMANTICS/PROCITEM.cpp"
