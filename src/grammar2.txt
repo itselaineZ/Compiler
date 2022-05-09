@@ -1,0 +1,25 @@
+Program type id ( ) Sb { } Inner Ss V B ; State C I W R A = return E while if else PE D relop X F + - Y G * / num FTYPE Call SCLB SC H ,
+Program -> type id ( ) Sb | type id ( SC ) Sb
+Sb -> { Inner Ss } | { Ss }
+Inner -> V ; B | V ;
+B -> V ; B | V ;
+V -> type id
+Ss -> State C | State
+C -> State C | State
+State -> I | W | R | A
+A -> id = E ;
+R -> return ; | return E ;
+W -> while ( E ) Sb
+I -> if ( E ) Sb else Sb | if ( E ) Sb
+E -> PE D | PE
+D -> relop PE D | relop PE
+PE -> X F | X
+F -> + X F | - X F | + X | - X
+X -> Y G | Y
+G -> * Y G | / Y G | * Y | / Y
+Y -> num | ( E ) | id FTYPE | id
+FTYPE -> Call
+Call -> ( SCLB )
+SC -> SCLB
+SCLB -> E H | E
+H-> , E H | , E

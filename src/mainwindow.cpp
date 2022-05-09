@@ -2,17 +2,22 @@
 #include "ui_mainwindow.h"
 #include "../include/PARSER/PARSER.h"
 #include "../include/PARSER/LEXICAL.h"
+#include "../include/SEMANTICS/WTITEM.h"
+#include "../include/SEMANTICS/CODE.h"
+#include "../include/SEMANTICS/OBJECT.h"
 #include <QPainter>
 vector<POINT> paintPoints;
 vector<QLine>paintLines;
 extern PARSER grammaranalyser;
 extern LEXICAL lexical;
+extern OBJECT object;
 QString strFIRST;
 QString strFOLLOW;
 QString strLR1;
 QString strSTACK;
 QString strSEMANTICES;
 QString strERROR;
+QString strOBJECT;
 #include <QBoxLayout>
 #include <QPushButton>
 MainWindow::MainWindow(MainWindow *parent)
@@ -28,6 +33,7 @@ MainWindow::MainWindow(MainWindow *parent)
     QPushButton *LR1 = new QPushButton("LR1");
     QPushButton *ANALYZE = new QPushButton("ANALYZE");
     QPushButton *SEMANTICS = new QPushButton("SEMANTICES");
+    QPushButton *OBJECT = new QPushButton("OBJECTCODE");
     QPushButton *ERROR = new QPushButton("ERROR");
 
     text = new QTextBrowser();
@@ -37,6 +43,7 @@ MainWindow::MainWindow(MainWindow *parent)
     hlayout->addWidget(LR1,0,Qt::AlignTop);
     hlayout->addWidget(ANALYZE,0,Qt::AlignTop);
     hlayout->addWidget(SEMANTICS,0,Qt::AlignTop);
+    hlayout->addWidget(OBJECT,0,Qt::AlignTop);
     hlayout->addWidget(ERROR,0,Qt::AlignTop);
 
     QVBoxLayout * vlayout= new QVBoxLayout;
@@ -65,7 +72,9 @@ MainWindow::MainWindow(MainWindow *parent)
     connect(ANALYZE,SIGNAL(clicked()),this,SLOT(ShowANALYZE()));
     strSEMANTICES=QString::fromStdString(grammaranalyser.PrintSemantics());
     connect(SEMANTICS,SIGNAL(clicked()),this,SLOT(ShowSEMANTICS()));
-    strERROR=QString::fromStdString(grammaranalyser.PrintError());
+    strOBJECT=QString::fromStdString(object.PrintCode());
+    connect(OBJECT,SIGNAL(clicked()),this,SLOT(ShowOBJECT()));
+    strERROR=QString::fromStdString(grammaranalyser.PrintError()+"\n"+object.PrintERROR());
     connect(ERROR,SIGNAL(clicked()),this,SLOT(ShowERROR()));
 }
 
@@ -148,6 +157,13 @@ void MainWindow::ShowSEMANTICS(){
 
     //将输出的内容用append输出到TextBrowser
     text->append(strSEMANTICES);
+}
+void MainWindow::ShowOBJECT(){
+    //清除结果区域前面缓存的结果
+    text->clear();
+
+    //将输出的内容用append输出到TextBrowser
+    text->append(strOBJECT);
 }
 void MainWindow::ShowERROR(){
     //清除结果区域前面缓存的结果

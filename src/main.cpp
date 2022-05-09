@@ -7,13 +7,14 @@
 
 PARSER grammaranalyser;
 LEXICAL lexical;
+OBJECT object;
 
 int main(int argc, char *argv[])
 {
-    grammaranalyser.Begin("D:\\Course\\Grammar\\grammer-analyser\\src\\grammar3.txt");
+    grammaranalyser.Begin("D:\\Course\\Grammar\\gram\\src\\grammar3.txt");
     //grammaranalyser.Begin("D:\\complier\\parser\\src\\grammar1.txt");
 
-    lexical.Begin("D:\\Course\\Grammar\\grammer-analyser\\src\\data1.txt");
+    lexical.Begin("D:\\Course\\Grammar\\gram\\src\\data3.txt");
     //lexical.TestBegin("D:\\complier\\parser\\src\\data.txt");
     //lexical.GetData().Print();
     if(grammaranalyser.Analyse(lexical.GetData())){
@@ -24,6 +25,9 @@ int main(int argc, char *argv[])
         cout<<"Can not identify\n";
     }
     grammaranalyser.PrintTreeArray();
+    object = OBJECT(grammaranalyser.GetSymbol());
+    object.GenObjectCode();
+    object.Print();
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

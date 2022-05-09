@@ -1,0 +1,20 @@
+//我是一条注释我会被自动取消
+/*一辈子很快就过去了
+就像这条注释一样
+那么轻易就被取消掉了，无人在意*/
+int f(int a){
+	return a;
+}
+int func(int a, int b){
+	return a+b;
+}
+int  main(void)
+{
+	int a;
+	int b;
+	int c;
+	a = 3;
+	b = 4;
+	c = func(a, f(b));
+	return 0;
+}

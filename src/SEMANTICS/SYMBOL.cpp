@@ -111,6 +111,12 @@ int SYMBOL::GetLtNum(){
 int SYMBOL::GetAtNum(){
     return this->arraytab.size();
 }
+int SYMBOL::FindName(string name){
+    int len = this->nametab.size();
+    for (int i = 0; i < len; ++ i) if (this->nametab[i].GetName() == name)
+        return i;
+    return -1;
+}
 bool SYMBOL::LookUpNametab(string id){
     if((count(this->code.begin(),this->code.end(),id))!=0){
         return true;

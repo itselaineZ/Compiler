@@ -17,10 +17,12 @@ SOURCES += \
     src/PARSER/STACKSTORE.cpp \
     src/SEMANTICS/ATTRIBUTE.cpp \
     src/SEMANTICS/NAMEITEM.cpp \
+    src/SEMANTICS/OBJECT.cpp \
     src/SEMANTICS/PROCITEM.cpp \
     src/SEMANTICS/QUATERNION.cpp \
     src/SEMANTICS/SEMANTICS.cpp \
     src/SEMANTICS/SYMBOL.cpp \
+    src/SEMANTICS/WTITEM.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/outcpp.cpp
@@ -35,12 +37,15 @@ HEADERS += \
     include/PARSER/TERM.h \
     include/SEMANTICS/ARRAYITEM.h \
     include/SEMANTICS/ATTRIBUTE.h \
+    include/SEMANTICS/CODE.h \
     include/SEMANTICS/LAYERITEM.h \
     include/SEMANTICS/NAMEITEM.h \
+    include/SEMANTICS/OBJECT.h \
     include/SEMANTICS/PROCITEM.h \
     include/SEMANTICS/QUATERNION.h \
     include/SEMANTICS/SEMANTICS.h \
     include/SEMANTICS/SYMBOL.h \
+    include/SEMANTICS/WTITEM.h \
     include/base.h \
     include/mainwindow.h \
     include/ourclass.h

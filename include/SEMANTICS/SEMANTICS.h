@@ -18,7 +18,7 @@ public:
     void AllCtrl(string left,TERM right,vector<string> stream);//用来做总控，控制哪条产生式对应哪个动作
     void Assign(string result);
     void AssignArray(string id);
-    void Return();
+    void Return(bool ret);
     void Claim(string name, string kind, string type,string left);
     void Relation();
     void Relation(string op,bool single);
@@ -39,6 +39,7 @@ public:
     void ToSM(string num="null");
     void FillProc();
     string PrintError();
+    SYMBOL* GetSymbol();
 };
 
 #endif // SEMANTICS_H

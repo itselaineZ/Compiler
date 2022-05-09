@@ -1,0 +1,30 @@
+Program int double float char string void and or id ( ) { } ; const = return while if else relop + - * / num , SMC SM HS QJBL HSSM SMLX [ ] XC YJK CSLB CS NBSM YJC NBBLSM M N YJ TJYJ XHYJ FHYJ FZYJ BDS @ YBDS GXBDS JFBDS ! X YZ CALL SCLB
+Program -> SMC
+SMC -> SMC SM | SM
+SM -> HS | QJBL
+HS -> int id HSSM | double id HSSM | float id HSSM | char id HSSM | string id HSSM | void id HSSM
+QJBL -> int id SMLX | double id SMLX | float id SMLX | char id SMLX | string id SMLX | const QJBL
+SMLX -> ; | [ num ] ;
+HSSM -> ( XC ) YJK
+XC -> CSLB | void
+CSLB -> CSLB , CS | CS
+CS -> int id | double id | string id | char id | float id
+YJK -> { NBSM YJC } | { YJC }
+NBSM -> NBSM NBBLSM | NBBLSM
+NBBLSM -> int id SMLX | double id SMLX | float id SMLX | char id SMLX | string id SMLX | const NBBLSM
+YJC -> YJC M YJ | YJ
+YJ -> TJYJ | XHYJ | FHYJ | FZYJ
+FZYJ -> id = BDS ; | id [ BDS ] = BDS ;
+FHYJ -> return BDS ; | return ;
+XHYJ -> while M ( BDS ) M YJK
+TJYJ -> if ( BDS ) M YJK | if ( BDS ) M YJK N else M YJK
+M -> @
+N -> @
+BDS -> BDS or M YBDS | YBDS
+YBDS -> YBDS and M GXBDS | GXBDS
+GXBDS -> GXBDS relop JFBDS | JFBDS | ! GXBDS | ( GXBDS )
+JFBDS -> JFBDS + X | JFBDS - X | X
+X -> X * YZ | X / YZ | YZ
+YZ -> num | ( BDS ) | id CALL | id | id [ BDS ]
+CALL -> ( SCLB ) | ( )
+SCLB -> SCLB , BDS | BDS

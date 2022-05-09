@@ -7,12 +7,19 @@ class QUATERNION{
     string op, opdl, opdr, result;
     int addr;
 public:
-    bool operator==(basic_string<char>){//?????????
+    bool operator==(basic_string<char>){
         return true;
     }
     QUATERNION(){
         this->addr = -1;
         this->result=".";
+    }
+    QUATERNION(string op,int addr,string opdl){
+        this->opdl = opdl;
+        this->opdr = "-";
+        this->op = op;
+        this->result = ".";
+        this->addr = addr;
     }
     QUATERNION(string opd, string op, string result){
         this->opdl = opd;
@@ -49,8 +56,13 @@ public:
         this->result = result;
         this->addr = -1;
     }  // Calc
-
+    bool IsAsgClause();
+    int JumpClause();
     int GetAddr();
+    string GetOpdl();
+    string GetOpdr();
+    string GetOp();
+    string GetResult();
     void SetAddr(int addr);
     string Print();
 };

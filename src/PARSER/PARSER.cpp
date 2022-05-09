@@ -688,3 +688,7 @@ vector<QLine> PARSER::PrintTreeLines(){
 string PARSER::PrintError(){
     return this->sematics->PrintError();
 }
+
+SYMBOL* PARSER::GetSymbol() {
+    return this->sematics->GetSymbol();
+}

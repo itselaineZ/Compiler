@@ -1,0 +1,21 @@
+//我是一条注释我会被自动取消
+int  program(void)
+{
+	int i;
+	int j;
+	i=0; 
+	j=2.8e2;	
+	if(a>(b+c))
+	{
+		j=a+(b*c+1);
+	}
+	else
+	{
+		j=a;
+	}
+	while(i<=100)
+	{
+		i=j*2;
+	}
+	return i;
+}

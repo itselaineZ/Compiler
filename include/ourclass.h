@@ -12,3 +12,7 @@
 #include "./SEMANTICS/PROCITEM.h"
 #include "./SEMANTICS/LAYERITEM.h"
 #include "./SEMANTICS/ARRAYITEM.h"
+
+#include "./SEMANTICS/WTITEM.h"
+#include "./SEMANTICS/CODE.h"
+#include "./SEMANTICS/OBJECT.h"

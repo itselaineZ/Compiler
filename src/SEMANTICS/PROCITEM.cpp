@@ -6,3 +6,6 @@ void PROCITEM::ChangeLast(int last){
 int PROCITEM::GetLastPara(){
     return this->lastpar;
 }
+int PROCITEM::GetEndPos(){
+    return this->endpos;
+}

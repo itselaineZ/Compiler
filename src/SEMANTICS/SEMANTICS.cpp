@@ -39,7 +39,12 @@ void SEMANTICS::AllCtrl(string left,TERM right,vector<string> stream){
         }
     }
     else if(left=="FHYJ"){//返回语句
-        this->Return();
+        if(right.num==2){
+            this->Return(false);
+        }
+        else{
+            this->Return(true);
+        }
     }
     else if(left=="SCLB"){//实参归结语句
         if(right.num==1){
@@ -65,7 +70,7 @@ void SEMANTICS::AllCtrl(string left,TERM right,vector<string> stream){
             kind="func";
             int lastpar=this->termtab["HSSM"].back().GetLastPara();
             int last=this->termtab["HSSM"].back().GetLastVar();
-            this->symbol->AddProcTab(PROCITEM(lastpar,last));
+            this->symbol->AddProcTab(PROCITEM(lastpar,last,this->symbol->GetQtNum()-1));
             this->termtab["HSSM"].pop_back();
         }
         else if(left=="QJBL"||left=="NBBLSM"){
@@ -118,9 +123,14 @@ void SEMANTICS::AllCtrl(string left,TERM right,vector<string> stream){
     else if(left=="YZ"){//因子
         string place;
         if(right.num==2){
-            this->Call(stream[0].substr(2));
+            if(right.term[1]=="CALL"){
+                this->Call(stream[0].substr(2));
+            }
+            else{
+                this->Array(stream[0].substr(2));
+            }
         }
-        if(right.num==4){
+        else if(right.num==4){
             this->Array(stream[0].substr(2));
         }
         else{
@@ -293,9 +303,16 @@ void SEMANTICS::AssignArray(string id){
     //报错，被赋值的id不存在
     //}
 }
-//对应 "返回语句 -> id = 表达式"归结时的动作
-void SEMANTICS::Return(){
-    this->symbol->AddQuaternion(QUATERNION("j",-1));//产生一个返回语句的四元式
+//对应 "返回语句 -> return ; | return BDS ;"归结时的动作
+void SEMANTICS::Return(bool ret){
+    if(ret){
+        string place=this->termtab["BDS"].back().GetPlace();
+        this->termtab["BDS"].pop_back();
+        this->symbol->AddQuaternion(QUATERNION("j",-1,place));//产生一个返回语句的四元式
+    }
+    else{
+        this->symbol->AddQuaternion(QUATERNION("j",-1));//产生一个返回语句的四元式
+    }
     this->nextquad++;
     vector<int> t=vector<int>();
     this->termtab["FHYJ"].push_back(ATTRIBUTE(t));
@@ -564,4 +581,8 @@ void SEMANTICS::ToSM(string num){
     else{
         this->termtab["SMLX"].push_back(ATTRIBUTE(num));
     }
+}
+
+SYMBOL* SEMANTICS::GetSymbol() {
+    return this->symbol;
 }

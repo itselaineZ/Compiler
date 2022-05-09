@@ -10,6 +10,7 @@ class LAYERITEM;
 class ARRAYITEM;
 
 class SYMBOL{
+    friend class OBJECT;
     vector<QUATERNION>code;
     vector<NAMEITEM>nametab;
     vector<PROCITEM>proctab;
@@ -34,6 +35,7 @@ public:
     int GetPtNum();
     int GetLtNum();
     int GetAtNum();
+    int FindName(string name);
 
     bool LookUpNametab(string id);
     string PrintCode();

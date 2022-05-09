@@ -10,6 +10,7 @@ class ITEMSET;
 class REDUCT;
 class STACKSTORE;
 class SEMANTICS;
+class SYMBOL;
 struct POINT{
     string content;
     QPoint pos;
@@ -70,6 +71,7 @@ public:
     string PrintError();
     vector<POINT> PrintTreePoints();
     vector<QLine> PrintTreeLines();
+    SYMBOL* GetSymbol();
 };
 
 #endif
